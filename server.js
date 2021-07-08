@@ -2,14 +2,13 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const rowdy = require('rowdy-logger')
-
 //connect to db
 const db = require('./models')
 db.connect()
 
 // config express app
 const app = express()
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 const rowdyResults = rowdy.begin(app)
 
 // middling wares

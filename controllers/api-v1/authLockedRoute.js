@@ -6,7 +6,7 @@ const authLockedRoute = async () => {
         // get the jwt from auth headers
         const authHeaders = req.headers.authorization
         // verify the jwt -- if the jwt is not valid will throw to catch
-        const decoded = jwt.verify(authHeader. process.env.JWT_SECRET)
+        const decoded = jwt.verify(authHeaders, process.env.JWT_SECRET)
         // find the user from the db
         const foundUser = await db.User.findById(decoded.id)
         // mount the user on the res.locals
@@ -14,7 +14,7 @@ const authLockedRoute = async () => {
         next()
     } catch (err) {
         console.log(err)
-        res.status(401).json({ msg: 'begone from this place' })
+        res.status(401).json({ msg: 'you must leave this place' })
     }
 }
 
